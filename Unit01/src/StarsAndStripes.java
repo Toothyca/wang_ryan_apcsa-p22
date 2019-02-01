@@ -18,21 +18,27 @@ public class StarsAndStripes
 
    public void printTwentyStars()
    {
+	  out.println("********************");
    }
 
    public void printTwentyDashes()
    {
+	  out.println("--------------------");
    }
 
    public void printTwoBlankLines()
    {
+	  out.println();
+	  out.println();
    }
    
    public void printASmallBox()
-   {	
+   {
+	  out.println("StarsAndStripes");
    }
  
    public void printABigBox()
-   { 	
+   { 
+	  out.println("StarsAndStripes");  
    }   
 }

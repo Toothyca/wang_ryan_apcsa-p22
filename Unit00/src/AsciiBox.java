@@ -4,7 +4,7 @@
 //Name Ryan Wang
 //Date 1/31/2019
 //Class AP CSA
-//Lab  0
+//Lab  AsciiBox
 
 public class AsciiBox
 {
