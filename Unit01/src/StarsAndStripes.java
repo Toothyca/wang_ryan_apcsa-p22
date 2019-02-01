@@ -34,11 +34,13 @@ public class StarsAndStripes
    
    public void printASmallBox()
    {
-	  out.println("StarsAndStripes");
+	  out.println("ASmallBox");
+	  //dx
    }
  
    public void printABigBox()
    { 
-	  out.println("StarsAndStripes");  
+	  out.println("ABigBox");
+	  //cx
    }   
 }
