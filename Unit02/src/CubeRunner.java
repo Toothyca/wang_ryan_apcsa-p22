@@ -1,7 +1,9 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
-//Date -
+//Name Ryan Wang
+//Date 2/4/2019
+//Class AP CSA
+//Lab CubeRunner
 
 public class CubeRunner
 {

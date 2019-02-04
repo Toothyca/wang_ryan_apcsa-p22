@@ -1,8 +1,8 @@
 //© A+ Computer Science  -  www.apluscompsci.com
-//Name -
-//Date -
-//Class -
-//Lab  - 
+//Name Ryan Wang
+//Date 2/4/2019
+//Class AP CSA
+//Lab TrapRunner
 
 public class TrapRunner
 {
