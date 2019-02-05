@@ -10,12 +10,12 @@ import static java.lang.System.*;
 
 public class OddOrEven
 {
-	public static boolean isOdd( )
+	public static boolean isOdd( int num )
 	{
-		return true;
+		return !(num % 2 == 0);
 	}
-	public static boolean isEven( )
+	public static boolean isEven( int num )
 	{
-		return true;
-	}	
+		return (num % 2 == 0);
+	}		
 }

@@ -20,7 +20,6 @@ public class Input
 		float floatOne, floatTwo;
 		short shortOne, shortTwo;
 
-
 		System.out.print("Enter an integer :: ");
 		intOne = keyboard.nextInt();
 

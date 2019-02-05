@@ -55,6 +55,6 @@ public class Distance
 
 	public String toString()
 	{
-		return "distance ==" + getDistance();
+		return "distance == " + String.format("%.3f",getDistance());
 	}
 }
