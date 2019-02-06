@@ -24,5 +24,25 @@ public class DistanceRunner
 		out.print("Enter Y2 :: ");
 		int y2 = keyboard.nextInt();
 		Distance distance = new Distance(x1, y1, x2, y2);
+		
+		out.print("Enter X1 :: ");
+		int x12 = keyboard.nextInt();
+		out.print("Enter Y1 :: ");
+		int y12 = keyboard.nextInt();
+		out.print("Enter X2 :: ");
+		int x22 = keyboard.nextInt();
+		out.print("Enter Y2 :: ");
+		int y22 = keyboard.nextInt();
+		Distance distance2 = new Distance(x12, y12, x22, y22);
+		
+		out.print("Enter X1 :: ");
+		int x13 = keyboard.nextInt();
+		out.print("Enter Y1 :: ");
+		int y13 = keyboard.nextInt();
+		out.print("Enter X2 :: ");
+		int x23 = keyboard.nextInt();
+		out.print("Enter Y2 :: ");
+		int y23 = keyboard.nextInt();
+		Distance distance3 = new Distance(x13, y13, x23, y23);
 	}
 }
