@@ -15,24 +15,34 @@ public class StringOddOrEven
 
 	public StringOddOrEven()
 	{
+		word = "";
 	}
 
 	public StringOddOrEven(String s)
 	{
+		setString(s);
+		toString();
 	}
 
 	public void setString(String s)
 	{
+		word = s;
 	}
 
  	public boolean isEven()
  	{
-		return false;
+ 		if (word.length()%2 == 0) {
+ 			return true;
+ 		} return false;
 	}
 
  	public String toString()
  	{
- 		String output="";
+ 		String state = "odd";
+ 		if (isEven()) {
+ 			state = "even";
+ 		}
+ 		String output= word + " is " + state + ".";
  		return output;
 	}
 }
