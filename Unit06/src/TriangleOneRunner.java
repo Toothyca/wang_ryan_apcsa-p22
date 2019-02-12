@@ -8,6 +8,9 @@ public class TriangleOneRunner
 {
 	public static void main ( String[] args )
 	{
-		//add test cases		
+		//add test cases
+		TriangleOne case1 = new TriangleOne("hippo");
 	}
 }
+
+//print an object that has no toString method in its constructor
