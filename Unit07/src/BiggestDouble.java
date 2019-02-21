@@ -16,7 +16,7 @@ public class BiggestDouble
 	public BiggestDouble(double a, double b, double c, double d)
 	{
 		setDoubles(a, b, c, d);
-		toString();
+		//toString();
 	}
 
 	public void setDoubles(double a, double b, double c, double d)

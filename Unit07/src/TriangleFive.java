@@ -40,7 +40,7 @@ public class TriangleFive
 				{
 					System.out.print(letter);
 				}
-				System.out.println("");
+				//System.out.println("");
 			}
 			amount -= 1;
 		}
