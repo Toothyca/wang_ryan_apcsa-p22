@@ -19,5 +19,8 @@ public class DeckTester {
 		
 		Deck deck1 = new Deck(ranks1, suits1, vals1);
 		//print decks, size, deals
+		
+		System.out.println(deck1);
+		System.out.println(deck1.size());
 	}
 }
