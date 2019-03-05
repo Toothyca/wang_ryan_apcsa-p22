@@ -1,5 +1,7 @@
 package activity3;
 
+import java.util.Arrays;
+
 /**
  * This class provides a convenient way to test shuffling methods.
  */
@@ -9,12 +11,12 @@ public class Shuffler {
 	 * The number of consecutive shuffle steps to be performed in each call
 	 * to each sorting procedure.
 	 */
-	private static final int SHUFFLE_COUNT = 8;
+	private static final int SHUFFLE_COUNT = 4;
 
 	/**
 	 * The number of values to shuffle.
 	 */
-	private static final int VALUE_COUNT = 52;
+	private static final int VALUE_COUNT = 8;
 
 	/**
 	 * Tests shuffling methods.
@@ -66,34 +68,50 @@ public class Shuffler {
 		//System.out.println((values.length+1/2));
 		if (values.length%2 != 0)
 		{
+			int[] temp = new int[values.length];
+			for (int t = 0; t < values.length; t++)
+			{
+				temp[t] = values[t];
+			}
+			//System.out.println(Arrays.toString(values));
 			for (int k = 0; k < values.length; k=k)
 			{
-				for (int i = 0; i < (values.length+1)/2; i++)
+				for (int i = 0; i < values.length/2; i++)
 				{
-					values[k] = i;
+					values[k] = temp[i];
 					k+=2;
+					//System.out.println(i + " " + k);
+
 				}
 				k=1;
-				for (int j = (values.length+1)/2; j < values.length; j++)
+				for (int j = values.length/2; j < values.length; j++)
 				{
-					values[k] = j;
+					values[k] = temp[j];
 					k+=2;
 				}
 			}	
 		}
 		else
 		{
+			int[] temp = new int[values.length];
+			for (int t = 0; t < values.length; t++)
+			{
+				temp[t] = values[t];
+			}
+			//System.out.println(Arrays.toString(values));
 			for (int k = 0; k < values.length; k=k)
 			{
 				for (int i = 0; i < values.length/2; i++)
 				{
-					values[k] = i;
+					values[k] = temp[i];
 					k+=2;
+					//System.out.println(i + " " + k);
+
 				}
 				k=1;
 				for (int j = values.length/2; j < values.length; j++)
 				{
-					values[k] = j;
+					values[k] = temp[j];
 					k+=2;
 				}
 			}	
@@ -113,7 +131,6 @@ public class Shuffler {
 	 */
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
-		System.out.println(values.length-1);
 
 		for (int m = values.length-1; m > 0; m--)
 		{
