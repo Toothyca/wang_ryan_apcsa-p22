@@ -1,5 +1,6 @@
 package activity4;
 
+
 /**
  * This is a class that tests the Deck class.
  */
@@ -17,13 +18,13 @@ public class DeckTesterArrayListVer {
 		String[] suits1 = {"diamonds", "clubs", "spades", "hearts"};
 		int[] vals1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
 		
-		Deck deck1 = new Deck(ranks1, suits1, vals1);
+		DeckArrayListVer deck1 = new DeckArrayListVer(ranks1, suits1, vals1);
 		
 		String[] ranks2 = {"jack", "queen", "king"};
 		String[] suits2 = {"diamonds", "clubs", "spades", "hearts"};
 		int[] vals2 = {11, 12, 13};
 		
-		Deck deck2 = new Deck(ranks2, suits2, vals2);
+		DeckArrayListVer deck2 = new DeckArrayListVer(ranks2, suits2, vals2);
 		
 		//print decks, size, deals
 		int constant = deck1.size();

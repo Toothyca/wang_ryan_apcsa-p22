@@ -1,5 +1,6 @@
 package activity4;
 
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -31,9 +32,11 @@ public class DeckArrayListVer {
 	 * @param suits is an array containing all of the card suits.
 	 * @param values is an array containing all of the card point values.
 	 */
-	public Deck(String[] ranks, String[] suits, int[] values) {
+	public DeckArrayListVer(String[] ranks, String[] suits, int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		for (int i = 0; i < cards.size(); i=i)
+		cards = new ArrayList<Card>();
+		//need to create space for date, simply creating instance variable only creates data type but won't have any place to put cards into
+		for (int i = 0; i < ranks.length*suits.length; i=i)
 		{
 			for (int j = 0; j < ranks.length; j++)
 			{
@@ -75,14 +78,14 @@ public class DeckArrayListVer {
 	 */
 	public void shuffle() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
-		for (int m = cards.length-1; m > 0; m--)
+		for (int m = cards.size()-1; m > 0; m--)
 		{
-			int randcrap = (int) (Math.random()*cards.length);
-			Card temp = cards[m];
-			cards[m] = cards[randcrap];
-			cards[randcrap] = temp;
+			int randcrap = (int) (Math.random()*cards.size());
+			Card temp = cards.get(m);
+			cards.set(m, cards.get(randcrap));
+			cards.set(randcrap, temp);
 		}
-		size = cards.length;
+		size = cards.size();
 	}
 
 	/**
@@ -92,7 +95,7 @@ public class DeckArrayListVer {
 	 */
 	public Card deal() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		Card returnedCard = cards[size-1];
+		Card returnedCard = cards.get(cards.size()-1);
 		size--;
 		return returnedCard;
 	}
@@ -106,7 +109,7 @@ public class DeckArrayListVer {
 		String rtn = "size = " + size + "\nUndealt cards: \n";
 
 		for (int k = size - 1; k >= 0; k--) {
-			rtn = rtn + cards[k];
+			rtn = rtn + cards.get(k);
 			if (k != 0) {
 				rtn = rtn + ", ";
 			}
@@ -117,12 +120,12 @@ public class DeckArrayListVer {
 		}
 
 		rtn = rtn + "\nDealt cards: \n";
-		for (int k = cards.length - 1; k >= size; k--) {
-			rtn = rtn + cards[k];
+		for (int k = cards.size() - 1; k >= size; k--) {
+			rtn = rtn + cards.get(k);
 			if (k != size) {
 				rtn = rtn + ", ";
 			}
-			if ((k - cards.length) % 2 == 0) {
+			if ((k - cards.size()) % 2 == 0) {
 				// Insert carriage returns so entire deck is visible on console.
 				rtn = rtn + "\n";
 			}

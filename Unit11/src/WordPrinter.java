@@ -10,5 +10,10 @@ public class WordPrinter
 		
 	public static void printWord(String word, int times)
 	{
+		while (times != 0)
+		{
+			System.out.println(word);
+			times--;
+		}
 	}
 }

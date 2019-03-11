@@ -9,9 +9,12 @@ public class TriangleWordRunner
 {
 	public static void main( String args[] )
 	{
-		String x = "will";
-		String y = x;
-		x = "tom";
-		System.out.println(x + " " + y);
+		
 	}
 }
+/*
+String x = "will";
+String y = x;
+x = "tom";
+System.out.println(x + " " + y);
+*/
