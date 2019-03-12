@@ -11,5 +11,15 @@ public class TriangleWord
 		
 	public static void printTriangle(String word)
 	{
+		String toPrint = "";
+		for(int i = 1; i < word.length()+1; i++)
+		{
+			toPrint = word.substring(0, i);
+			for (int j = 0; j < i; j++)
+			{
+				System.out.print(toPrint);
+			}
+			System.out.println("");
+		}
 	}
 }
