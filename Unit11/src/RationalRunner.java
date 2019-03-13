@@ -8,16 +8,17 @@ public class RationalRunner
 {
 	public static void main( String args[] )
 	{
-		/*uncomment once Rational class is built
-		 *
+		//uncomment once Rational class is built
+		
 		Rational test = new Rational();
 		out.println("test = " + test);
 
+		
 		Rational newOne = new Rational(3,4);
 		out.println("newOne = "+newOne);
-
+		
 		out.println("test.equals(newOne) = "+test.equals(newOne));
-
+		
 		newOne = (Rational)test.clone();
 		out.println("\n\nnewOne after test.clone() = "+newOne);
 		out.println("test.equals(newOne) = "+test.equals(newOne));
@@ -30,7 +31,7 @@ public class RationalRunner
 				
 		out.println("\n\nrOne = "+rOne);
 		out.println("rTwo = "+rTwo);
-
+		/*
 		out.println("rOne.compareTo(rTwo) = "+rOne.compareTo(rTwo));
 		out.println("rTwo.compareTo(rOne) = "+rTwo.compareTo(rOne));
 
@@ -65,6 +66,6 @@ public class RationalRunner
 		out.println("\n\n1/6.equals(2/8) = "+rOne.equals(rTwo));				
 		rOne.add(rTwo);
 		out.println("\n\n1/6.add(2/8) = "+ rOne);		
-		*/	
+		*/
 	}
 }
