@@ -14,10 +14,17 @@ public class ToyStoreRunner
 	{
 		ToyStore toysrus = new ToyStore();
 		toysrus.loadToys("sorry bat sorry sorry sorry train train teddy teddy ball ball");
+		System.out.println(toysrus);
+		System.out.println(toysrus.getMostFrequentToy());
+		toysrus.sortToysByCount();
+		System.out.println(toysrus);
+		System.out.println(toysrus.getThatToy("ball"));
 		
-		
-		String toSplit = "sorry bat sorry sorry sorry train train teddy teddy ball ball";
-		String[] toy = toSplit.split(" ");
-		System.out.println(Arrays.toString(toy));
+		toysrus.loadToys("noobgares noobgares seangares crepe crepe crepe");
+		System.out.println(toysrus);
+		System.out.println(toysrus.getMostFrequentToy());
+		toysrus.sortToysByCount();
+		System.out.println(toysrus);
+		System.out.println(toysrus.getThatToy("noobgares"));
 	}
 }
