@@ -12,7 +12,6 @@ public class RationalRunner
 		
 		Rational test = new Rational();
 		out.println("test = " + test);
-
 		
 		Rational newOne = new Rational(3,4);
 		out.println("newOne = "+newOne);

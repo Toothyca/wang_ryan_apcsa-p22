@@ -64,7 +64,7 @@ public class ToyStore
   				maxpos = i;
   			}
   		}
-  		return "" + ToyList.get(maxpos).getName();
+  		return "max == " + ToyList.get(maxpos).getName();
   	}  
   
   	public void sortToysByCount()

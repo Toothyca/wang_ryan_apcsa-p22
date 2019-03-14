@@ -114,7 +114,6 @@ class Rational implements Comparable<Rational>
 		return denominator;
 	}
 	
-	
 	public boolean equals(Rational obj)
 	{
     this.reduce();
@@ -128,7 +127,6 @@ class Rational implements Comparable<Rational>
 
 	public int compareTo(Rational other)
 	{
-		//ADD MORE
 		this.reduce();
 		other.reduce();
 		double fracthis = numerator/denominator;
