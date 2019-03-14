@@ -1,7 +1,3 @@
-//(c) A+ Computer Science
-//www.apluscompsci.com
-//Name -
-
 import static java.lang.System.*;
 
 import java.util.ArrayList; 
@@ -47,7 +43,7 @@ class Rational implements Comparable<Rational>
 		//num1/den1 + num2/den2 		
 		//new numerator = (num1 * den2 + num2 * den1)
 		
-		double newnum = (this.numerator * other.denominator + other.numerator * this.denominator);
+		double newnum = (this.numerator * other.denominator) + (other.numerator * this.denominator);
 		
 		//new denominator = (den1 * den2)
 		
@@ -61,14 +57,9 @@ class Rational implements Comparable<Rational>
 
 	private void reduce()
 	{
-		for (int i = 9; i > 0; i--) 
-		{
-			if (numerator%i == 0 && denominator%i == 0)
-			{
-				numerator%=i;
-				denominator%=i;
-			}
-		}
+    int greatestcd = gcd((int) numerator, (int) denominator);
+    numerator/=greatestcd;
+    denominator/=greatestcd;
 	}
 
 	private int gcd(int numOne, int numTwo)
@@ -76,14 +67,14 @@ class Rational implements Comparable<Rational>
 		ArrayList<Integer> numOneDivisors = new ArrayList<Integer>();
 		ArrayList<Integer> numTwoDivisors = new ArrayList<Integer>();
 		int gcd = 0;
-		for (int i = 0; i < numOne; i++)
+		for (int i = 1; i <= numOne; i++)
 		{
 			if (numOne%i==0)
 			{
 				numOneDivisors.add(i);
 			}
 		}
-		for (int j = 0; j < numTwo; j++)
+		for (int j = 1; j <= numTwo; j++)
 		{
 			if (numTwo%j==0)
 			{
@@ -100,7 +91,6 @@ class Rational implements Comparable<Rational>
 				}
 			}
 		}
-		
 		return gcd;
 	}
 
@@ -125,9 +115,11 @@ class Rational implements Comparable<Rational>
 	}
 	
 	
-	public boolean equals( Object obj)
+	public boolean equals(Rational obj)
 	{
-		if (this == obj)
+    this.reduce();
+    obj.reduce();
+		if (numerator == obj.getNumerator() && denominator == obj.getDenominator())
 		{
 			return true;
 		}
@@ -136,7 +128,20 @@ class Rational implements Comparable<Rational>
 
 	public int compareTo(Rational other)
 	{
-		return this.compareTo(other);
+		//ADD MORE
+		this.reduce();
+		other.reduce();
+		double fracthis = numerator/denominator;
+		double fracother = other.getNumerator()/other.getDenominator();
+		if (fracthis == fracother)
+		{
+			return 0;
+		}
+		else if (fracthis > fracother)
+		{
+			return 1;
+		}
+		return -1;
 	}
 	
 	//write  toString() method
