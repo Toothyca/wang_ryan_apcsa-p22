@@ -12,14 +12,13 @@ public class WordRunner
 {
 	public static void main( String args[] ) throws IOException
 	{
+		
 		Scanner file = new Scanner(new File("words.dat"));
 
 		int size = file.nextInt();
 		file.nextLine();
-		
-
-
-
+		//iterate through size to get the words, put in in list or some crap
+		System.out.println(size);
 
 
 

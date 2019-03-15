@@ -33,17 +33,25 @@ public class Skeleton implements Monster
 		return size;
 	}
 	
-	public boolean isBigger(Skeleton other)
+	public boolean isBigger(Monster other)
 	{
 		return (this.size > other.getHowBig());
 	}
 	
-	public boolean isSmaller(Skeleton other)
+	public boolean isSmaller(Monster other)
 	{
 		return (this.size < other.getHowBig());
 	}
 	
-
+	public boolean namesTheSame(Monster other)
+	{
+		return (this.name.equals(other.getName()));
+	}
 	
+
 	//add a toString
+	public String toString()
+	{
+		return getName() + " " + getHowBig();
+	}
 }
