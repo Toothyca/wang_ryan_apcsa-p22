@@ -24,20 +24,27 @@ public class WordRunner
 			wordList[i] = new Word(file.next());
 		}
 		
-		for (int j = 0; j < wordList.length-1; j++)
+		boolean changed = true;
+		Word temp;
+		while (changed)
 		{
-			Word temp;
-			if (wordList[j].compareTo(wordList[j+1]) == 1)
+			changed = false;
+			for (int j = 0; j < wordList.length-1; j++)
 			{
-				temp = wordList[j];
-				wordList[j] = wordList[j+1];
-				wordList[j+1] = temp;
+				if (wordList[j].compareTo(wordList[j+1]) == 1)
+				{
+					changed = true;
+					temp = wordList[j];
+					wordList[j] = wordList[j+1];
+					wordList[j+1] = temp;
+				}
 			}
 		}
-		Arrays.sort(wordList);
-		System.out.println(Arrays.asList(wordList));
-
-
+		
+		for (int k = 0; k < wordList.length; k++)
+		{
+			System.out.println(wordList[k]);
+		}
 	}
 }
 

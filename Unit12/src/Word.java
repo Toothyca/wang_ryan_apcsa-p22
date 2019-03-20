@@ -15,37 +15,33 @@ public class Word implements Comparable<Word>
 
 	public int compareTo( Word rhs )
 	{		
+
 		//-1 = 1st comes after 2nd
-		if (word.compareTo(rhs.toString()) == 0)
-		{
-			System.out.println("0");
-
-			return 0;
-		}
-
-		if (word.length() < rhs.toString().length())
-		{
-			System.out.println("1");
-
-			return 1;
-		}
-		
 		if (word.length() > rhs.toString().length())
 		{
-			return -1;
-		}
-		
-		if (word.compareTo(rhs.toString()) > 1)
-		{
 			return 1;
 		}
-		
-		//if (word.compareTo(rhs.toString()) < 1)
-		//{
+		if (word.length() < rhs.toString().length())
+		{
 			return -1;
-		//}
-		
-		
+		}
+		if (word.length() == rhs.toString().length())
+		{
+			if (word.compareTo(rhs.toString()) > 0)
+			{
+				return 1;
+			}
+			if (word.compareTo(rhs.toString()) < 0)
+			{
+				return -1;				
+			}
+			if (word.compareTo(rhs.toString()) == 0)
+			{
+				return 0;
+			}
+			
+		}
+		return 415;
 	}
 
 	public String toString()
