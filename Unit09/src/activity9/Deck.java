@@ -46,6 +46,7 @@ public class Deck {
 				}
 			}
 		}
+		shuffle();
 	}
 
 
@@ -93,6 +94,10 @@ public class Deck {
 	 */
 	public Card deal() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		if (size == 0)
+		{
+			return null;
+		}
 		Card returnedCard = cards[size-1];
 		size--;
 		return returnedCard;
