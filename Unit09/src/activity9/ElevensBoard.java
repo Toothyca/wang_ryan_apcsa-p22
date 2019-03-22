@@ -2,6 +2,7 @@ package activity9;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * The ElevensBoard class represents the board in a game of Elevens.
@@ -66,28 +67,17 @@ public class ElevensBoard extends Board {
 	 *         false otherwise.
 	 */
 	public boolean anotherPlayIsPossible() {
-		for (int i = 0; i < size(); i++)
-		{
-			for (int j = 0; j < size(); j++)
-			{
-				if (cardAt(i).pointValue() + cardAt(j).pointValue() == 11)
-				{
-					return true;
-				}
-				for (int k = 0; k < size(); k++)
-				{
-					ArrayList<String> selectedValues = new ArrayList<String>();
-					selectedValues.add(cardAt(i).rank());
-					selectedValues.add(cardAt(j).rank());
-					selectedValues.add(cardAt(k).rank());
-					if (selectedValues.contains("jack") && selectedValues.contains("queen") && selectedValues.contains("king"))
-					{
-						return true;
-					}
-				}
-			}
-		}
 		
+		List<Integer> cindex = cardIndexes();
+		
+		if (containsPairSum11(cindex))
+		{
+			return true;
+		}
+		else if (containsJQK(cindex))
+		{
+			return true;
+		}
 		return false;
 	}
 
@@ -101,9 +91,15 @@ public class ElevensBoard extends Board {
 	 *              contain an 11-pair; false otherwise.
 	 */
 	private boolean containsPairSum11(List<Integer> selectedCards) {
-		if (selectedCards.size() == 2)
+		for (int i = 0; i < selectedCards.size(); i++)
 		{
-			return cardAt(selectedCards.get(0)).pointValue() + cardAt((selectedCards.get(1))).pointValue() == 11;
+			for (int j = 0; j < selectedCards.size(); j++)
+			{
+				{
+					if (cardAt(selectedCards.get(i)).pointValue() + cardAt((selectedCards.get(j))).pointValue() == 11)
+					return true;
+				}
+			}
 		}
 		return false;
 	}
@@ -118,13 +114,22 @@ public class ElevensBoard extends Board {
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
-		if (selectedCards.size() == 3)
+		for (int i = 0; i < selectedCards.size(); i++)
 		{
-			ArrayList<String> selectedRanks = new ArrayList<String>();
-			selectedRanks.add(cardAt(selectedCards.get(0)).rank());
-			selectedRanks.add(cardAt(selectedCards.get(1)).rank());
-			selectedRanks.add(cardAt(selectedCards.get(2)).rank());
-			return (selectedRanks.contains("jack") && selectedRanks.contains("queen") && selectedRanks.contains("king"));
+			for (int j = 0; j < selectedCards.size(); j++)
+			{
+				for (int k = 0; k < selectedCards.size(); k++)
+				{
+					ArrayList<String> selectedValues = new ArrayList<String>();
+					selectedValues.add(cardAt(selectedCards.get(i)).rank());
+					selectedValues.add(cardAt(selectedCards.get(j)).rank());
+					selectedValues.add(cardAt(selectedCards.get(k)).rank());
+					if (selectedValues.contains("jack") && selectedValues.contains("queen") && selectedValues.contains("king"))
+					{
+						return true;
+					}
+				}
+			}
 		}
 		return false;
 	}

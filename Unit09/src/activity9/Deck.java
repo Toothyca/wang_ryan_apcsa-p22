@@ -94,6 +94,7 @@ public class Deck {
 	 */
 	public Card deal() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		/*
 		if (size == 0)
 		{
 			return null;
@@ -101,6 +102,16 @@ public class Deck {
 		Card returnedCard = cards[size-1];
 		size--;
 		return returnedCard;
+		*/
+		if (size > 0)
+		{
+			size--;
+			return cards[size];
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 	/**
