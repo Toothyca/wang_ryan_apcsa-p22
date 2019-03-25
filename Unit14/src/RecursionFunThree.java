@@ -22,7 +22,7 @@ public class RecursionFunThree
 	{
 		if (number != 0)
 		{
-			if (String.valueOf(number).length() == 0)
+			if (String.valueOf(number).length() == 1)
 			{
 				return 0;
 			}

@@ -23,7 +23,5 @@ public class Recursion234Runner
 		System.out.println(RecursionFunThree.luckyThrees(3113));
 		System.out.println(RecursionFunThree.luckyThrees(13331));
 		System.out.println(RecursionFunThree.luckyThrees(777337777));
-		
-		//SOMETHING WRONG
 	}
 }
