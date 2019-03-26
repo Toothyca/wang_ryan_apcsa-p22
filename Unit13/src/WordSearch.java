@@ -11,6 +11,16 @@ public class WordSearch
 
     public WordSearch( int size, String str )
     {
+    	int counter = 0;
+    	for(int i = 0; i < size; i++)
+    	{
+    		for (int j = 1; j < size+1; j++)
+    		{
+    			//m[i][j] = str.substring(counter, counter + 1);
+    			System.out.print(str.substring(counter, counter + 1));
+    			counter++;
+    		}
+    	}
     }
 
     public boolean isFound( String word )
