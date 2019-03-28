@@ -11,14 +11,23 @@ public class WordSearch
 
     public WordSearch( int size, String str )
     {
+    	m = new String[size][size];
     	int counter = 0;
-    	for(int i = 0; i < size; i++)
+    	int rowcounter = 0;
+    	int columncounter = 0;
+    	for(int i = 0; i < size*size; i++)
     	{
-    		for (int j = 1; j < size+1; j++)
+    		m[rowcounter][columncounter] = str.substring(i, i + 1);
+    		counter++;
+    		columncounter++;
+    		if (columncounter == size)
     		{
-    			//m[i][j] = str.substring(counter, counter + 1);
-    			System.out.print(str.substring(counter, counter + 1));
-    			counter++;
+    			columncounter = 0;
+    		}
+    		if (counter == size)
+    		{
+    			rowcounter++;
+    			counter = 0;
     		}
     	}
     }
@@ -70,6 +79,16 @@ public class WordSearch
 
     public String toString()
     {
- 		return "";
+    	String output = "";
+    	for (int i = 0; i < m.length; i++)
+    	{
+    		for (int j = 0; j < m[i].length; j++)
+    		{
+    			output += m[i][j] + " ";
+    		}
+    		output += "\n";
+    	}
+ 		return output;
+
     }
 }
