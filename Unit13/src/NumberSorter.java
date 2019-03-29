@@ -23,10 +23,7 @@ public class NumberSorter
 		return count;
 	}
 	
-	private static void sortIt(int[] array, int low, int high)
-	{
-		int partitioned = partition(array, low, high);
-	}
+
 
 	public static int[] getSortedDigitArray(int number)
 	{
@@ -37,7 +34,7 @@ public class NumberSorter
 			sorted[i] = number%10;
 			number/=10;
 		}
-		sortIt(sorted, sorted[0], sorted[sorted.length-1]);
+		QuickSort.quickSort(sorted);
 		return sorted;
 	}
 }
