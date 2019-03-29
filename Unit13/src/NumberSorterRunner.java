@@ -13,6 +13,7 @@ public class NumberSorterRunner
 		for( int test : cases )
 		{
 			int[] one = NumberSorter.getSortedDigitArray( test );
+			//System.out.println(Arrays.toString(one));
 			for(int item : one)
 			{
 				System.out.print(item + " ");
