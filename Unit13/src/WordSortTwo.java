@@ -23,11 +23,11 @@ public class WordSortTwo
 			int j = i;
 			while(j > 0 && val.compareTo(wordRay[j-1]) < 0)
 			{
-				System.out.println(wordRay[j] + " and " + wordRay[j-1]);
+				//System.out.println(wordRay[j] + " and " + wordRay[j-1]);
 				wordRay[j] = wordRay[j-1];
-				System.out.println(wordRay[j] + " aNd " + wordRay[j-1]);
+				//System.out.println(wordRay[j] + " aNd " + wordRay[j-1]);
 				j--;
-				System.out.println(Arrays.toString(wordRay));
+				//System.out.println(Arrays.toString(wordRay));
 
 			}
 			wordRay[j] = val;
