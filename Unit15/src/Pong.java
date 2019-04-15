@@ -21,6 +21,7 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	private boolean[] keys;
 	private BufferedImage back;
 
+	private int leftScore, rightScore;
 
 	public Pong()
 	{
@@ -32,6 +33,8 @@ public class Pong extends Canvas implements KeyListener, Runnable
 
 		keys = new boolean[4];
 
+		leftScore = 0;
+		rightScore = 0;
     
     	setBackground(Color.WHITE);
 		setVisible(true);
@@ -62,13 +65,29 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		ball.moveAndDraw(graphToBack);
 		leftPaddle.draw(graphToBack);
 		rightPaddle.draw(graphToBack);
+		
+		window.drawString("Left Score " + leftScore, 500, 500);
+		window.drawString("Right Score: " + rightScore, 500, 520);
 
 		
 		//see if ball hits left wall or right wall
 
 		if(!(ball.getX()>=0 && ball.getX()<= 775))
-		{
-			ball.setXSpeed(-ball.getXSpeed());
+		{			
+			if(!(ball.getX()>=0))
+			{
+				//ball.setXSpeed(Math.abs(ball.getXSpeed())*-1);
+				leftScore++;
+			}
+			else
+			{
+				ball.setXSpeed(Math.abs(ball.getXSpeed()));
+				rightScore++;
+			}
+			//make ball disappear, randomize direction
+			ball.setX(0);
+			ball.setY(100);
+			System.out.println("Left: " + leftScore + " Right: " + rightScore);
 		}
 
 		//see if the ball hits the top or bottom wall
@@ -79,33 +98,75 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		}
 
 
-		//see if the ball hits the left paddle
-		
-		
+		//see if the ball hits the left paddle		
+			if(ball.getX() <= leftPaddle.getX() + leftPaddle.getWidth() + Math.abs(ball.getXSpeed())
+			&& (ball.getY() >= leftPaddle.getY()
+			&& ball.getY() <= leftPaddle.getY() + leftPaddle.getHeight()
+			|| ball.getY() + ball.getHeight() >= leftPaddle.getY()
+			&& ball.getY() + ball.getHeight() < leftPaddle.getY() + leftPaddle.getHeight()))
+		{
+				System.out.println("2");
+			if(ball.getX() <= leftPaddle.getX() + leftPaddle.getWidth() - Math.abs(ball.getXSpeed()))
+			{
+				ball.setYSpeed(ball.getYSpeed() * -1);
+			}			  
+			else
+			{
+				ball.setXSpeed(ball.getXSpeed() * -1);	
+			}
+		}
+			
 		
 		//see if the ball hits the right paddle
-		
-		
-		
-
+			if(ball.getX() >= rightPaddle.getX() + rightPaddle.getWidth() + Math.abs(ball.getXSpeed())
+			&& (ball.getY() >= rightPaddle.getY()
+			&& ball.getY() <= rightPaddle.getY() + rightPaddle.getHeight()
+			|| ball.getY() + ball.getHeight() >= rightPaddle.getY()
+			&& ball.getY() + ball.getHeight() < rightPaddle.getY() + rightPaddle.getHeight()))
+		{
+			System.out.println("1");
+			if(ball.getX() <= rightPaddle.getX() + rightPaddle.getWidth() - Math.abs(ball.getXSpeed()))
+			{
+				ball.setYSpeed(ball.getYSpeed() * -1);
+			}			  
+			else
+			{
+				ball.setXSpeed(ball.getXSpeed() * -1);	
+			}
+		}
 
 		//see if the paddles need to be moved
+		if(keys[0] == true)
+		{
+			//move left paddle up and draw it on the window
+			if(leftPaddle.getY()>=0)
+			{
+				leftPaddle.moveUpAndDraw(graphToBack);
+			}
+		}
+		if(keys[1] == true)
+		{
+			//move left paddle down and draw it on the window
+			if(leftPaddle.getY()<=500)
+			{
+				leftPaddle.moveDownAndDraw(graphToBack);
+			}
+		}
+		if(keys[2] == true)
+		{
+			if(rightPaddle.getY()>=0)
+			{
+			rightPaddle.moveUpAndDraw(graphToBack);
+			}
+		}
+		if(keys[3] == true)
+		{
+			if(rightPaddle.getY()<=500)
+			{
+			rightPaddle.moveDownAndDraw(graphToBack);
+			}
+		}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
 		twoDGraph.drawImage(back, null, 0, 0);
 	}
 
@@ -113,9 +174,9 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	{
 		switch(toUpperCase(e.getKeyChar()))
 		{
-			case 'W' : keys[0]=true; break;
+			case 'A' : keys[0]=true; break;
 			case 'Z' : keys[1]=true; break;
-			case 'I' : keys[2]=true; break;
+			case 'K' : keys[2]=true; break;
 			case 'M' : keys[3]=true; break;
 		}
 	}
@@ -124,9 +185,9 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	{
 		switch(toUpperCase(e.getKeyChar()))
 		{
-			case 'W' : keys[0]=false; break;
+			case 'A' : keys[0]=false; break;
 			case 'Z' : keys[1]=false; break;
-			case 'I' : keys[2]=false; break;
+			case 'K' : keys[2]=false; break;
 			case 'M' : keys[3]=false; break;
 		}
 	}
