@@ -67,6 +67,13 @@ public class Ball extends Block
       draw(window);
    }
    
+   public void redraw(Graphics window)
+   {
+	   draw(window, Color.white);
+	   setX(0);
+	   setY(100);
+   }
+   
 	public boolean equals(Object obj)
 	{
 		Ball other = (Ball)obj;

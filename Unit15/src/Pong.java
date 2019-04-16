@@ -19,6 +19,7 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	private Paddle leftPaddle;
 	private Paddle rightPaddle;
 	private boolean[] keys;
+	private boolean hitLeftPaddle, hitRightPaddle;
 	private BufferedImage back;
 
 	private int leftScore, rightScore;
@@ -26,10 +27,15 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	public Pong()
 	{
 		//set up all variables related to the game
-		ball = new Ball(10, 100, 1, 1, Color.blue);//, 2, 1);
-		leftPaddle = new Paddle(20, 200, 10, 40, Color.orange, 2);
-		rightPaddle = new Paddle(760, 200, 10 , 40, Color.orange, 2);
+		ball = new Ball(400, 300, 2, 1, Color.blue);
+		//ball = new BlinkyBall(400, 300, 10, 10, Color.blue, 2, 1);
+		//ball = new SpeedUpBall(400, 300, 10, 10, Color.blue, 1, 1);
+
+		leftPaddle = new Paddle(20, 200, 10, 100, Color.orange, 2);
+		rightPaddle = new Paddle(760, 200, 10 , 100, Color.orange, 2);
 		
+		hitLeftPaddle = false;
+		hitRightPaddle = false;
 
 		keys = new boolean[4];
 
@@ -66,34 +72,48 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		leftPaddle.draw(graphToBack);
 		rightPaddle.draw(graphToBack);
 		
-		window.drawString("Left Score " + leftScore, 500, 500);
-		window.drawString("Right Score: " + rightScore, 500, 520);
-
+		
 		
 		//see if ball hits left wall or right wall
 
-		if(!(ball.getX()>=0 && ball.getX()<= 775))
+		if(!(ball.getX()>=10 && ball.getX()<= 775))
 		{			
-			if(!(ball.getX()>=0))
+			System.out.println("X: " + ball.getX());
+			if((ball.getX()>=10))
 			{
-				//ball.setXSpeed(Math.abs(ball.getXSpeed())*-1);
+				ball.redraw(graphToBack);
+				ball.setXSpeed(Math.abs(ball.getXSpeed())*-1);
 				leftScore++;
 			}
-			else
+			else if(ball.getX()<= 775)
 			{
+				ball.redraw(graphToBack);
 				ball.setXSpeed(Math.abs(ball.getXSpeed()));
 				rightScore++;
 			}
-			//make ball disappear, randomize direction
-			ball.setX(0);
-			ball.setY(100);
+			ball.setX((int)(Math.random() * 600));
+			ball.setY(300);
 			System.out.println("Left: " + leftScore + " Right: " + rightScore);
 		}
-
+		
+		graphToBack.setColor(Color.WHITE);
+		graphToBack.fillRect(400, 520, 100, 40);
+		graphToBack.fillRect(100, 520, 120, 20);
+		graphToBack.fillRect(600, 520, 120, 20);
+		
+		graphToBack.setColor(Color.red);
+		graphToBack.drawString("Left Score " + leftScore, 400, 540);
+		graphToBack.drawString("Right Score: " + rightScore, 400, 560);
+		graphToBack.drawString("hitLeftPaddle = "+hitLeftPaddle, 100, 540);
+		graphToBack.drawString("hitRightPaddle = "+hitRightPaddle,  600,  540);
+		
+		
 		//see if the ball hits the top or bottom wall
 
 		if(!(ball.getY()>=0 && ball.getY()<= 550))
 		{
+			hitLeftPaddle = false;
+			hitRightPaddle = false;
 			ball.setYSpeed(-ball.getYSpeed());
 		}
 
@@ -105,7 +125,8 @@ public class Pong extends Canvas implements KeyListener, Runnable
 			|| ball.getY() + ball.getHeight() >= leftPaddle.getY()
 			&& ball.getY() + ball.getHeight() < leftPaddle.getY() + leftPaddle.getHeight()))
 		{
-				System.out.println("2");
+			hitLeftPaddle = true;
+			hitRightPaddle = false;
 			if(ball.getX() <= leftPaddle.getX() + leftPaddle.getWidth() - Math.abs(ball.getXSpeed()))
 			{
 				ball.setYSpeed(ball.getYSpeed() * -1);
@@ -118,14 +139,15 @@ public class Pong extends Canvas implements KeyListener, Runnable
 			
 		
 		//see if the ball hits the right paddle
-			if(ball.getX() >= rightPaddle.getX() + rightPaddle.getWidth() + Math.abs(ball.getXSpeed())
+			if(ball.getX() >= rightPaddle.getX() - rightPaddle.getWidth() + Math.abs(ball.getXSpeed())
 			&& (ball.getY() >= rightPaddle.getY()
 			&& ball.getY() <= rightPaddle.getY() + rightPaddle.getHeight()
 			|| ball.getY() + ball.getHeight() >= rightPaddle.getY()
 			&& ball.getY() + ball.getHeight() < rightPaddle.getY() + rightPaddle.getHeight()))
 		{
-			System.out.println("1");
-			if(ball.getX() <= rightPaddle.getX() + rightPaddle.getWidth() - Math.abs(ball.getXSpeed()))
+			hitLeftPaddle = false;
+			hitRightPaddle = true;
+			if(ball.getX() <= rightPaddle.getX() - rightPaddle.getWidth() - Math.abs(ball.getXSpeed()))
 			{
 				ball.setYSpeed(ball.getYSpeed() * -1);
 			}			  
