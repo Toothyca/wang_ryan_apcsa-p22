@@ -9,13 +9,53 @@
 public class PictureTester
 {
   /** Method to test zeroBlue */
-  public static void testZeroBlue()
+	public static void testZeroRed()
+	{
+	  Picture beach = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\beach.jpg");
+	  beach.explore();
+	  beach.zeroRed();
+	  beach.explore();
+	}
+	  
+	public static void testZeroGreen()
+	{
+	  Picture beach = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\beach.jpg");
+	  beach.explore();
+	  beach.zeroGreen();
+	  beach.explore();
+	}
+	
+	public static void testZeroBlue()
   {
     Picture beach = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\beach.jpg");
     beach.explore();
     beach.zeroBlue();
     beach.explore();
   }
+	
+	public static void testKeepOnlyRed()
+	{
+		Picture blueMark = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\blue-mark.jpg");
+		blueMark.explore();
+		blueMark.keepOnlyRed();
+		blueMark.explore();
+	}
+	
+	public static void testKeepOnlyGreen()
+	{
+		Picture blueMark = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\blue-mark.jpg");
+		blueMark.explore();
+		blueMark.keepOnlyGreen();
+		blueMark.explore();
+	}
+	
+	public static void testKeepOnlyBlue()
+	{
+		Picture blueMark = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\blue-mark.jpg");
+		blueMark.explore();
+		blueMark.keepOnlyBlue();
+		blueMark.explore();
+	}
   
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
@@ -58,14 +98,16 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
+	//testZeroRed();
+	//testZeroGreen();
+    //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();
     //testGrayscale();
     //testFixUnderwater();
-    //testMirrorVertical();
+    testMirrorVertical();
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
