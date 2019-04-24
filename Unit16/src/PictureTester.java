@@ -56,15 +56,71 @@ public class PictureTester
 		blueMark.keepOnlyBlue();
 		blueMark.explore();
 	}
+	
+	public static void testNegate()
+	{
+		Picture TOOTHY = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\TOOTHY.jpg");
+		TOOTHY.explore();
+		TOOTHY.negate();
+		TOOTHY.explore();
+	}
   
+	public static void testGrayscale()
+	{
+		Picture TOOTHY = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\TOOTHY.jpg");
+		TOOTHY.explore();
+		TOOTHY.grayscale();
+		TOOTHY.explore();
+	}
+	
+	public static void testFixUnderwater()
+	{
+		Picture water = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\water.jpg");
+		water.explore();
+		water.fixUnderwater();
+		water.explore();
+	}
+	
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
-    Picture caterpillar = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\caterpillar.jpg");
-    caterpillar.explore();
-    caterpillar.mirrorVertical();
-    caterpillar.explore();
+    Picture jenny = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\jenny-red.jpg");
+    jenny.explore();
+    jenny.mirrorVertical();
+    jenny.explore();
   }
+  
+  public static void testMirrorVerticalRightToLeft()
+  {
+    Picture jenny = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\jenny-red.jpg");
+    jenny.explore();
+    jenny.mirrorVerticalRightToLeft();
+    jenny.explore();
+  }
+  
+  public static void testMirrorHorizontal()
+  {
+    Picture motorcycle = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\redMotorcycle.jpg");
+    motorcycle.explore();
+    motorcycle.mirrorHorizontal();
+    motorcycle.explore();
+  }
+  
+  public static void testMirrorHorizontalBotToTop()
+  {
+    Picture motorcycle = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\redMotorcycle.jpg");
+    motorcycle.explore();
+    motorcycle.mirrorHorizontalBotToTop();
+    motorcycle.explore();
+  }
+  
+	public static void testMirrorDiagonal()
+	{
+	  Picture beach = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\beach.jpg");
+	  beach.explore();
+	  beach.mirrorDiagonal();
+	  beach.explore();
+	}  
   
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
@@ -75,10 +131,26 @@ public class PictureTester
     temple.explore();
   }
   
+  public static void testMirrorArms()
+  {
+    Picture snowman = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\snowman.jpg");
+    snowman.explore();
+    snowman.mirrorArms();
+    snowman.explore();
+  }
+  
+  public static void testMirrorGull()
+  {
+	  Picture gull = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\seagull.jpg");
+	  gull.explore();
+	  gull.mirrorGull();
+	  gull.explore();	  
+  }
+  
   /** Method to test the collage method */
   public static void testCollage()
   {
-    Picture canvas = new Picture("640x480.jpg");
+    Picture canvas = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\640x480.jpg");
     canvas.createCollage();
     canvas.explore();
   }
@@ -107,12 +179,16 @@ public class PictureTester
     //testNegate();
     //testGrayscale();
     //testFixUnderwater();
-    testMirrorVertical();
+    //testMirrorVertical();
+	//testMirrorVerticalRightToLeft();
+	//testMirrorHorizontal();
+	//testMirrorHorizontalBotToTop();
+	//testMirrorDiagonal();
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
-    //testCollage();
+    testCollage();
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();
