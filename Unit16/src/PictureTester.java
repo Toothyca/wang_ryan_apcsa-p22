@@ -179,6 +179,13 @@ public class PictureTester
     swan.explore();
   }
   
+  public static void testEdgeDetection2()
+  {
+    Picture TOOTHY = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\TOOTHY.jpg");
+    TOOTHY.edgeDetection(10);
+    TOOTHY.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -206,10 +213,10 @@ public class PictureTester
     //testMirrorDiagonal();
     //testCollage();
 	//testCopy2();
-	  testMyCollage();
+	testMyCollage();
     //testCopy();
     //testEdgeDetection();
-    //testEdgeDetection2();
+    testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
