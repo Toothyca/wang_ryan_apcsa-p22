@@ -147,12 +147,28 @@ public class PictureTester
 	  gull.explore();	  
   }
   
+
+  
   /** Method to test the collage method */
   public static void testCollage()
   {
     Picture canvas = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\640x480.jpg");
     canvas.createCollage();
     canvas.explore();
+  }
+  
+  public static void testCopy2()
+  {
+	  Picture canvas = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\640x480.jpg");
+	  canvas.createCollage2();
+	  canvas.explore();
+  }
+  
+  public static void testMyCollage()
+  {
+	  Picture canvas = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\640x480.jpg");
+	  canvas.myCollage();
+	  canvas.explore();
   }
   
   /** Method to test edgeDetection */
@@ -188,7 +204,9 @@ public class PictureTester
     //testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
-    testCollage();
+    //testCollage();
+	//testCopy2();
+	  testMyCollage();
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();

@@ -306,10 +306,8 @@ public class Picture extends SimplePicture
     Pixel botPixel = null;
     Pixel[][] pixels = this.getPixels2D();
     
-    // loop through the rows
     for (int row = 158; row < mirrorPoint; row++)
     {
-      // loop from 13 to just before the mirror point
       for (int col = 103; col < 170; col++)
       {
         
@@ -323,10 +321,8 @@ public class Picture extends SimplePicture
     Pixel topPixel2 = null;
     Pixel botPixel2 = null;
     
-    // loop through the rows
     for (int row = 171; row < mirrorPoint; row++)
     {
-      // loop from 13 to just before the mirror point
       for (int col = 239; col < 294; col++)
       {
         
@@ -344,10 +340,8 @@ public class Picture extends SimplePicture
     Pixel noGullPixel = null;
     Pixel[][] pixels = this.getPixels2D();
     
-    // loop through the rows
     for (int row = 230; row < 320; row++)
     {
-      // loop from 13 to just before the mirror point
       for (int col = 230; col < mirrorPoint; col++)
       {
         
@@ -397,12 +391,12 @@ public class Picture extends SimplePicture
 	  Pixel[][] toPixels = this.getPixels2D();
 	  Pixel[][] fromPixels = fromPic.getPixels2D();
 	  for (int fromRow = 0, toRow = startRow; 
-			  fromRow < fromPixels.length &&
+			  fromRow < endRow &&
 			  toRow < toPixels.length; 
 			  fromRow++, toRow++)
 	  {
 		  for (int fromCol = 0, toCol = startCol; 
-				  fromCol < fromPixels[0].length &&
+				  fromCol < endCol &&
 				  toCol < toPixels[0].length;  
 				  fromCol++, toCol++)
 		  {
@@ -413,9 +407,6 @@ public class Picture extends SimplePicture
 	  }   
 }
   
-  
-  
-
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
@@ -431,6 +422,56 @@ public class Picture extends SimplePicture
     this.copy(flower2,500,0);
     this.mirrorVertical();
     this.write("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\test\\collage.jpg");
+  }
+  
+  public void createCollage2()
+  {
+	  Picture TOOTHY = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\TOOTHY.jpg");
+	  this.copy2(TOOTHY, 0, 0, 123, 200);
+	  this.copy2(TOOTHY, 0, 200, 123, 200);
+	  this.copy2(TOOTHY, 0, 400, 123, 200);
+	  this.copy2(TOOTHY, 150, 0, 123, 200);
+	  this.copy2(TOOTHY, 150, 200, 123, 200);
+	  this.copy2(TOOTHY, 150, 400, 123, 200);
+	  this.copy2(TOOTHY, 300, 0, 123, 200);
+	  this.copy2(TOOTHY, 300, 200, 123, 200);
+	  this.copy2(TOOTHY, 300, 400, 123, 200);
+  }
+  
+  public void myCollage()
+  {
+	  Picture TOOTHY = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\TOOTHY.jpg");
+	  Picture TOOTHYZeroGreen = new Picture(TOOTHY);
+	  TOOTHYZeroGreen.zeroGreen();
+	  Picture TOOTHYKeepOnlyRed = new Picture(TOOTHY);
+	  TOOTHYKeepOnlyRed.keepOnlyRed();
+	  Picture TOOTHYNegate = new Picture(TOOTHY);
+	  TOOTHYNegate.negate();
+	  this.copy2(TOOTHYZeroGreen, 0, 0, 123, 200);
+	  this.copy(TOOTHY, 125, 0);
+	  this.copy2(TOOTHYZeroGreen, 125, 0, 123, 350);
+	  this.copy(TOOTHYNegate, 125, 325);
+	  this.copy2(TOOTHYKeepOnlyRed, 125, 325, 123, 350);
+
+	  int mirrorPoint = 320;
+	  Pixel leftPixel = null;
+	  Pixel rightPixel = null;
+	  Pixel[][] pixels = this.getPixels2D();
+	    
+	  // loop through the rows
+	  for (int row = 5; row < 123; row++)
+	  {
+	    // loop from 13 to just before the mirror point
+	    for (int col = 5; col < mirrorPoint; col++)
+	    {
+	        
+	      leftPixel = pixels[row][col];      
+	      rightPixel = pixels[row]                       
+	    		  [mirrorPoint - col + mirrorPoint];
+	      rightPixel.setColor(leftPixel.getColor());
+	    }
+	  }
+
   }
   
   
