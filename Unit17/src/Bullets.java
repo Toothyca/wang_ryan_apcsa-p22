@@ -48,11 +48,25 @@ public class Bullets
 	{
 		//IF IT IS NOT EMPTY
 
+		/*
 		for(Ammo pew : ammo)
 		{
 			if(pew.getY() <= 0)
 			{
-				pew = new Ammo(0, 0, 0);
+				//System.out.println(ammo.size());
+				System.out.println(pew);
+				//pew = new Ammo(0, 0, 0);
+				System.out.println(ammo.indexOf(pew) + " " + ammo.size());
+				ammo.remove(pew);
+				System.out.println(ammo.indexOf(pew));
+			}
+		}
+		*/
+		for (int i = 0; i < ammo.size(); i++)
+		{
+			Ammo pew = ammo.get(i);
+			if(pew.getY() <= 0)
+			{
 				ammo.remove(pew);
 			}
 		}

@@ -13,6 +13,7 @@ import static java.lang.Character.*;
 import java.awt.image.BufferedImage;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OuterSpace extends Canvas implements KeyListener, Runnable
 {
@@ -20,13 +21,9 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	private Alien alienOne;
 	private Alien alienTwo;
 	private Ammo silverBullet;
-	private Bullets bullets;
-
-	/* uncomment once you are ready for this part
-	 *
-   private AlienHorde horde;
+    private AlienHorde horde;
 	private Bullets shots;
-	*/
+
 
 	private boolean[] keys;
 	private BufferedImage back;
@@ -39,11 +36,13 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
 		//instantiate other instance variables
 		//Ship, Alien
-		ship = new Ship(10, 10, 50, 50, 10);
-		alienOne = new Alien(350, 10, 50, 50, 10);
-		alienTwo = new Alien(450, 10, 50, 50, 10);
+		ship = new Ship(10, 10, 50, 50, 4);
+		alienOne = new Alien(350, 10, 50, 50, 1);
+		alienTwo = new Alien(450, 10, 50, 50, 1);
 		silverBullet = new Ammo(0, 0, 0);
-
+		horde = new AlienHorde(1);
+		shots = new Bullets();
+		
 		this.addKeyListener(this);
 		new Thread(this).start();
 
@@ -78,7 +77,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		alienOne.draw(graphToBack);
 		alienTwo.draw(graphToBack);
 		silverBullet.draw(graphToBack);
-
+		horde.add(alienOne);
+		horde.add(alienTwo);
 		
 		//add code to move Ship, Alien, etc.
 		if(keys[0] == true)
@@ -108,13 +108,14 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		if(keys[4] == true)
 		{
 			silverBullet = new Ammo(ship.getX() + ship.getWidth()/2-6, ship.getY(), 10);
-			bullets.add(silverBullet);
+			shots.add(silverBullet);
+			keys[4] = false;
 		}
 		graphToBack.setColor(Color.WHITE);
-		silverBullet.move("UP");
-		silverBullet.draw(graphToBack);
-		bullets.cleanEmUp();
-		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
+		shots.drawEmAll(graphToBack);
+		shots.moveEmAll();
+		shots.cleanEmUp();
+		//add in collision detection to see if shots hit the Aliens and if shots hit the Ship
 		if((silverBullet.getX() <= alienOne.getX() + alienOne.getWidth() + Math.abs(silverBullet.getSpeed()) && silverBullet.getX() > alienOne.getX())
 				&& (silverBullet.getY() >= alienOne.getY() && silverBullet.getY() <= alienOne.getY() + alienOne.getHeight()
 				|| silverBullet.getY() + silverBullet.getHeight() >= alienOne.getY()
@@ -122,7 +123,28 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		{
 			alienOne = new Alien(0, 0, 0, 0, 0);
 		}
+		/*
+		int rng = (int) (Math.random()*100000);
+		if(rng == 1)
+		{
+			System.out.println(horde.toString());
+			Alien newAlien = new Alien(350, 10, 50, 50, 1);
+			newAlien.draw(graphToBack);
+			horde.add(newAlien);
+		}
+		*/
+		Alien newAlien = new Alien(350, 10, 50, 50, 1);
+		newAlien.draw(graphToBack);
+		//SOMETHING IS WRONG, ADDS TO MANY DUDES
+		System.out.println(horde.toString());
 
+		horde.moveEmAll();
+		//horde.removeDeadOnes((List<Ammo>)shots);
+
+		
+		
+		
+		
 		twoDGraph.drawImage(back, null, 0, 0);
 	}
 

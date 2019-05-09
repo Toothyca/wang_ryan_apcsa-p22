@@ -83,6 +83,6 @@ public class Alien extends MovingThing
 
 	public String toString()
 	{
-		return "";
+		return "X: " + getX() + " Y: " + getY();
 	}
 }
