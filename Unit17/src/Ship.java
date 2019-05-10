@@ -4,6 +4,7 @@
 
 import java.io.File;
 import java.net.URL;
+import java.util.List;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -35,8 +36,6 @@ public class Ship extends MovingThing
 		speed=s;
 		try
 		{
-			//URL url = getClass().getResource("/images/ship.jpg");
-			//image = ImageIO.read(url);
 			image = ImageIO.read(new File ("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit17\\src\\ship.jpg"));
 			
 		}
@@ -81,6 +80,20 @@ public class Ship extends MovingThing
 	public void draw( Graphics window )
 	{
    	window.drawImage(image,getX(),getY(),getWidth(),getHeight(),null);
+	}
+	
+	public void checkIfDead(List<Alien> aliens)
+	{
+		for(Alien ET: aliens)
+		{
+			if((this.getX() <= ET.getX() + ET.getWidth() + Math.abs(this.getSpeed()) && this.getX() > ET.getX())
+					&& (this.getY() >= ET.getY() && this.getY() <= ET.getY() + ET.getHeight()
+					|| this.getY() + this.getHeight() >= ET.getY()
+					&& this.getY() + this.getHeight() < ET.getY() + ET.getHeight()))
+			{
+				this.setPos(900, 900);
+			}
+		}
 	}
 
 	public String toString()

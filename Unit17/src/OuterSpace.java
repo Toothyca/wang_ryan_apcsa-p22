@@ -18,8 +18,9 @@ import java.util.List;
 public class OuterSpace extends Canvas implements KeyListener, Runnable
 {
 	private Ship ship;
-	private Alien alienOne;
-	private Alien alienTwo;
+	private Alien alienOne, alienTwo, alienThree, alienFour, alienFive,
+	alienSix, alienSeven, alienEight, alienNine, alienTen, alienEleven,
+	alienTwelve, alienThirteen, alienFourteen;
 	private Ammo silverBullet;
     private AlienHorde horde;
 	private Bullets shots;
@@ -36,12 +37,41 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
 		//instantiate other instance variables
 		//Ship, Alien
-		ship = new Ship(10, 10, 50, 50, 4);
-		alienOne = new Alien(350, 10, 50, 50, 1);
-		alienTwo = new Alien(450, 10, 50, 50, 1);
+		ship = new Ship(350, 500, 50, 50, 4);
 		silverBullet = new Ammo(0, 0, 0);
 		horde = new AlienHorde(1);
 		shots = new Bullets();
+		
+		alienOne = new Alien(50, 10, 50, 50, 1);
+		alienTwo = new Alien(150, 10, 50, 50, 1);
+		alienThree = new Alien(250, 10, 50, 50, 1);
+		alienFour = new Alien(350, 10, 50, 50, 1);
+		alienFive = new Alien(450, 10, 50, 50, 1);
+		alienSix = new Alien(550, 10, 50, 50, 1);
+		alienSeven = new Alien(650, 10, 50, 50, 1);
+		
+		alienEight = new Alien(50, 100, 50, 50, 1);
+		alienNine = new Alien(150, 100, 50, 50, 1);
+		alienTen = new Alien(250, 100, 50, 50, 1);
+		alienEleven = new Alien(350, 100, 50, 50, 1);
+		alienTwelve = new Alien(450, 100, 50, 50, 1);
+		alienThirteen = new Alien(550, 100, 50, 50, 1);
+		alienFourteen = new Alien(650, 100, 50, 50, 1);
+		
+		horde.add(alienOne);
+		horde.add(alienTwo);
+		horde.add(alienThree);
+		horde.add(alienFour);
+		horde.add(alienFive);
+		horde.add(alienSix);
+		horde.add(alienSeven);
+		horde.add(alienEight);
+		horde.add(alienNine);
+		horde.add(alienTen);
+		horde.add(alienEleven);
+		horde.add(alienTwelve);
+		horde.add(alienThirteen);
+		horde.add(alienFourteen);
 		
 		this.addKeyListener(this);
 		new Thread(this).start();
@@ -74,11 +104,22 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		graphToBack.fillRect(0,0,800,600);
 
 		ship.draw(graphToBack);
+		silverBullet.draw(graphToBack);
+
 		alienOne.draw(graphToBack);
 		alienTwo.draw(graphToBack);
-		silverBullet.draw(graphToBack);
-		horde.add(alienOne);
-		horde.add(alienTwo);
+		alienThree.draw(graphToBack);
+		alienFour.draw(graphToBack);
+		alienFive.draw(graphToBack);
+		alienSix.draw(graphToBack);
+		alienSeven.draw(graphToBack);
+		alienEight.draw(graphToBack);
+		alienNine.draw(graphToBack);
+		alienTen.draw(graphToBack);
+		alienEleven.draw(graphToBack);
+		alienTwelve.draw(graphToBack);
+		alienThirteen.draw(graphToBack);
+		alienFourteen.draw(graphToBack);
 		
 		//add code to move Ship, Alien, etc.
 		if(keys[0] == true)
@@ -116,38 +157,18 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		shots.moveEmAll();
 		shots.cleanEmUp();
 		//add in collision detection to see if shots hit the Aliens and if shots hit the Ship
-		if((silverBullet.getX() <= alienOne.getX() + alienOne.getWidth() + Math.abs(silverBullet.getSpeed()) && silverBullet.getX() > alienOne.getX())
-				&& (silverBullet.getY() >= alienOne.getY() && silverBullet.getY() <= alienOne.getY() + alienOne.getHeight()
-				|| silverBullet.getY() + silverBullet.getHeight() >= alienOne.getY()
-				&& silverBullet.getY() + silverBullet.getHeight() < alienOne.getY() + alienOne.getHeight()))
-		{
-			alienOne = new Alien(0, 0, 0, 0, 0);
-		}
-		/*
-		int rng = (int) (Math.random()*100000);
-		if(rng == 1)
-		{
-			System.out.println(horde.toString());
-			Alien newAlien = new Alien(350, 10, 50, 50, 1);
-			newAlien.draw(graphToBack);
-			horde.add(newAlien);
-		}
-		*/
-		Alien newAlien = new Alien(350, 10, 50, 50, 1);
-		newAlien.draw(graphToBack);
-		//SOMETHING IS WRONG, ADDS TO MANY DUDES
-		System.out.println(horde.toString());
-
 		horde.moveEmAll();
-		//horde.removeDeadOnes((List<Ammo>)shots);
-
+		horde.removeDeadOnes(shots.getList());
+		ship.checkIfDead(horde.getList());
 		
-		
-		
+		if(ship.getX() == 900 && ship.getY() == 900)
+		{
+			System.out.println("YOU LOSE!!!!!!!!!!!!");
+		}
 		
 		twoDGraph.drawImage(back, null, 0, 0);
 	}
-
+	
 
 	public void keyPressed(KeyEvent e)
 	{

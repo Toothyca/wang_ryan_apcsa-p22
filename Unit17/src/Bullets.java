@@ -27,7 +27,6 @@ public class Bullets
 	//post - draw each Ammo
 	public void drawEmAll( Graphics window )
 	{
-		//IF IT IS NOT EMPTY
 		for(Ammo pew : ammo)
 		{
 			pew.draw(window);
@@ -36,8 +35,6 @@ public class Bullets
 
 	public void moveEmAll()
 	{
-		//IF IT IS NOT EMPTY
-
 		for(Ammo pew : ammo)
 		{
 			pew.move("UP");
@@ -46,22 +43,6 @@ public class Bullets
 
 	public void cleanEmUp()
 	{
-		//IF IT IS NOT EMPTY
-
-		/*
-		for(Ammo pew : ammo)
-		{
-			if(pew.getY() <= 0)
-			{
-				//System.out.println(ammo.size());
-				System.out.println(pew);
-				//pew = new Ammo(0, 0, 0);
-				System.out.println(ammo.indexOf(pew) + " " + ammo.size());
-				ammo.remove(pew);
-				System.out.println(ammo.indexOf(pew));
-			}
-		}
-		*/
 		for (int i = 0; i < ammo.size(); i++)
 		{
 			Ammo pew = ammo.get(i);
@@ -71,6 +52,12 @@ public class Bullets
 			}
 		}
 	}
+	/*
+	public void ammoRemove(Ammo shot)
+	{
+		ammo.remove(shot);
+	}
+	*/
 
 	public List<Ammo> getList()
 	{

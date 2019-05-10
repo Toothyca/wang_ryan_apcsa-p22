@@ -36,32 +36,30 @@ public class AlienHorde
 	{
 		for(Alien ET : aliens)
 		{
-			int rng = (int) (Math.random()*2);
-			if (rng == 0)
+			ET.move("LEFT");
+			if (ET.getX() < 10 || ET.getX() > 735)
 			{
-				rng = (int) (Math.random()*2);
-				if (ET.getX() >= 0 && rng == 0)
+				ET.setSpeed(ET.getSpeed()*-1);
+				int current = ET.getY();
+				while(Math.abs(ET.getY() - current) < 50)
 				{
-					ET.move("LEFT");
-				}
-				else if (ET.getX() <= 735 && rng == 1)
-				{
-					ET.move("RIGHT");
+					if (ET.getX() < 10)
+					{
+						ET.move("UP");
+
+					}
+					else
+					{
+						ET.move("DOWN");
+
+					}
 				}
 			}
-			else if (rng == 1)
+			if (ET.getY() <= 500)
 			{
-				rng = (int) (Math.random()*2);
-				if (ET.getY() >= 5 && rng == 0)
-				{
-					ET.move("UP");
-				}
-				else if (ET.getY() <= 250 && rng == 1)
-				{
-					ET.move("DOWN");
-				}
 			}
 		}
+		
 	}
 
 	public void removeDeadOnes(List<Ammo> shots)
@@ -76,12 +74,19 @@ public class AlienHorde
 						|| bullet.getY() + bullet.getHeight() >= selectedAlien.getY()
 						&& bullet.getY() + bullet.getHeight() < selectedAlien.getY() + selectedAlien.getHeight()))
 				{
-					selectedAlien = new Alien(0, 0, 0, 0, 0);
 					aliens.remove(selectedAlien);
+					selectedAlien.setPos(900, 900);
+					//REMOVE BULLET AFTER IT HITS
 				}
 			}
 		}
 	}
+	
+	public List<Alien> getList()
+	{
+		return aliens;
+	}
+	
 
 	public String toString()
 	{
