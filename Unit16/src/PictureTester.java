@@ -186,6 +186,15 @@ public class PictureTester
     TOOTHY.explore();
   }
   
+  public static void testEncode()
+  {
+	  Picture beach = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\beach.jpg");
+	  Picture msg = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\msg.jpg");
+	  beach.encode(msg);
+	  beach.explore();
+	  beach.decode().explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -213,15 +222,16 @@ public class PictureTester
     //testMirrorDiagonal();
     //testCollage();
 	//testCopy2();
-	testMyCollage();
+	//testMyCollage();
     //testCopy();
     //testEdgeDetection();
-    testEdgeDetection2();
+    //testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
+    testEncode();
   }
 }

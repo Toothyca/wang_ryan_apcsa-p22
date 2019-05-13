@@ -3,6 +3,7 @@
 //Name -
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Canvas;
@@ -25,6 +26,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
     private AlienHorde horde;
 	private Bullets shots;
 
+	
+	private boolean gameDone;
 
 	private boolean[] keys;
 	private BufferedImage back;
@@ -34,7 +37,9 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		setBackground(Color.black);
 
 		keys = new boolean[5];
-
+		gameDone = false;
+	
+		
 		//instantiate other instance variables
 		//Ship, Alien
 		ship = new Ship(350, 500, 50, 50, 4);
@@ -163,10 +168,31 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		
 		if(ship.getX() == 900 && ship.getY() == 900)
 		{
-			System.out.println("YOU LOSE!!!!!!!!!!!!");
+			dead(graphToBack);
+		}
+		
+		if(horde.getList().size() == 0)
+		{
+			win(graphToBack);
 		}
 		
 		twoDGraph.drawImage(back, null, 0, 0);
+	}
+	
+	public void dead(Graphics window)
+	{
+		window.setColor(Color.red);
+		window.setFont(new Font("TimesRoman", Font.PLAIN, 100)); 
+		window.drawString("You Died", 200, 300);
+		gameDone = true;
+	}
+	
+	public void win(Graphics window)
+	{
+		window.setColor(Color.red);
+		window.setFont(new Font("TimesRoman", Font.PLAIN, 100)); 
+		window.drawString("You're Winner!", 82, 300);
+		gameDone = true;
 	}
 	
 
@@ -229,7 +255,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
    {
    	try
    	{
-   		while(true)
+   		while(!gameDone)//true)
    		{
    		   Thread.currentThread().sleep(5);
             repaint();

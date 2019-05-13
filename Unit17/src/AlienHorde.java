@@ -76,7 +76,7 @@ public class AlienHorde
 				{
 					aliens.remove(selectedAlien);
 					selectedAlien.setPos(900, 900);
-					//REMOVE BULLET AFTER IT HITS
+					//shots.getList().ammoRemove(bullet);
 				}
 			}
 		}

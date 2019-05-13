@@ -52,12 +52,10 @@ public class Bullets
 			}
 		}
 	}
-	/*
 	public void ammoRemove(Ammo shot)
 	{
 		ammo.remove(shot);
 	}
-	*/
 
 	public List<Ammo> getList()
 	{
