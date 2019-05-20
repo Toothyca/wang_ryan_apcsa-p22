@@ -548,6 +548,7 @@ public class Picture extends SimplePicture
   
   public void encode(Picture messagePict)
   {
+	  /*
 	  Pixel[][] messagePixels = messagePict.getPixels2D();
 	  Pixel[][] currPixels = this.getPixels2D();
 	  Pixel currPixel = null;
@@ -570,6 +571,54 @@ public class Picture extends SimplePicture
 		  }
 	  }
 	  System.out.println(count);
+	  */
+	  Pixel[][] messagePixels = messagePict.getPixels2D();
+	  Pixel[][] currPixels = this.getPixels2D();
+	  Pixel currPixel = null;
+	  Pixel messagePixel = null;
+	  int count = 0;
+	  double avg = 0.0;
+	  int lastDigit = 0;
+	  
+	  
+	  for (int row = 0; row < this.getHeight(); row++)
+	  {
+		  for (int col = 0; col < this.getWidth(); col++)
+		  {
+			  currPixel = currPixels[row][col];
+			  avg += currPixel.getRed();
+			  avg += currPixel.getGreen();
+			  avg += currPixel.getBlue();
+			  count++;
+		  }
+	  }
+	  avg/= count;
+	  lastDigit = ((int) avg)%10;
+	  
+	  for (int row = 0; row < this.getHeight(); row++)
+	  {
+		  for (int col = 0; col < this.getWidth(); col++)
+		  {
+			  // if the current pixel's RGB values modded by 10 are same as last digit make it not that
+			  currPixel = currPixels[row][col];
+			  if (currPixel.getRed() % 10 == lastDigit)
+				  currPixel.setRed(currPixel.getRed() + 1);
+			  if (currPixel.getBlue() % 10 == lastDigit)
+				  currPixel.setBlue(currPixel.getGreen() + 1);
+			  if (currPixel.getGreen() % 10 == lastDigit)
+				  currPixel.setGreen(currPixel.getGreen() + 1);
+			  messagePixel = messagePixels[row][col];
+			  if (messagePixel.colorDistance(Color.BLACK) < 50)
+			  {
+				  currPixel.setRed(currPixel.getRed() - currPixel.getRed()%10 + lastDigit);
+				  currPixel.setGreen(currPixel.getGreen() - currPixel.getGreen()%10 + lastDigit);
+				  currPixel.setBlue(currPixel.getBlue() - currPixel.getBlue()%10 + lastDigit);
+				  System.out.println(currPixel.getRed() + " and " + currPixel.getGreen() + " and " + currPixel.getBlue());
+			  }
+		  }
+	  }
+	  currPixels[0][0].setRed(currPixel.getRed() - currPixel.getRed()%10 + lastDigit);
+	  //System.out.println(lastDigit);
   	}
   /**
   * Method to decode a message hidden in the
@@ -587,14 +636,19 @@ public class Picture extends SimplePicture
 	  Picture messagePicture = new Picture(height,width);
 	  Pixel[][] messagePixels = messagePicture.getPixels2D();
 	  int count = 0;
+	  int lastDigit = pixels[0][0].getRed()%10;
+	  
+	  //NEED TO FIND A WAY TO GET THE SAME LAST DIGIT VALUE. RIGHT NOW, IT IS DIFFERENT BECAUSE CHANGED RGB VALUES IN ENCODE
+	  
 	  for (int row = 0; row < this.getHeight(); row++)
 	  {
 		  for (int col = 0; col < this.getWidth(); col++)
 		  {
 			  currPixel = pixels[row][col];
 			  messagePixel = messagePixels[row][col];
-			  if (currPixel.getRed() % 2 == 1)
+			  if (currPixel.getRed() % 10 == lastDigit && currPixel.getBlue() % 10 == lastDigit && currPixel.getGreen() % 10 == lastDigit)
 			  {
+				  System.out.println(currPixel.getRed()%10 + " and " + currPixel.getGreen() + " and " + currPixel.getBlue());
 				  messagePixel.setColor(Color.BLACK);
 				  count++;
 			  }

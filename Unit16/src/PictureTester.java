@@ -189,7 +189,9 @@ public class PictureTester
   public static void testEncode()
   {
 	  Picture beach = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\beach.jpg");
-	  Picture msg = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\msg.jpg");
+	  beach.explore();
+	  Picture msg = new Picture("H:\\APCSA\\wang_ryan_apcsa-p22\\Unit16\\src\\images\\crybytes-apple_icon.jpg");
+	  msg.explore();
 	  beach.encode(msg);
 	  beach.explore();
 	  beach.decode().explore();
